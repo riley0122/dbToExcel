@@ -7,10 +7,6 @@ package dev.riley0122.dbToExcel;
 
 import java.util.Properties;
 
-/**
- * Hello world!
- *
- */
 public class App 
 {
     public static Properties parseArgs(String[] args)
