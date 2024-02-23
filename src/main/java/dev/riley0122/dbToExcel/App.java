@@ -36,7 +36,24 @@ public class App
     public static void main( String[] args )
     {
         Properties parsedArgs = parseArgs(args);
-        
+
+        if (parsedArgs.getProperty("help") != null) {
+            if (parsedArgs.getProperty("help").equals("true"))
+            {
+                // TODO: generate help menu
+            } else if (parsedArgs.getProperty("help").equals("dbTypes"))
+            {
+                System.out.println("Database type is specified with --dbType=TYPE\n\nAvailable types are:\n\t- sqlite\n\t- json\n\t- mysql\n\t- postgresql");
+            }
+            return;
+        }
+
+        if (parsedArgs.getProperty("dbType") == null)
+        {
+            System.out.println("Please specify a database type using --dbType=TYPE, To see what types are available use --help=dbTypes");
+            return;
+        }
+
         System.out.println( "Hello World!" );
     }
 }
