@@ -7,7 +7,7 @@ package dev.riley0122.dbToExcel;
 
 import java.util.Properties;
 
-public class App 
+public class App
 {
     public static Properties parseArgs(String[] args)
     {
@@ -44,12 +44,17 @@ public class App
             return;
         }
 
-        if (parsedArgs.getProperty("dbType") == null)
+        if (parsedArgs.getProperty("dbType") == null || parsedArgs.getProperty("dbType").equals("true"))
         {
             System.out.println("Please specify a database type using --dbType=TYPE, To see what types are available use --help=dbTypes");
             return;
         }
 
-        System.out.println( "Hello World!" );
+        if (parsedArgs.getProperty("dbType").toLowerCase().equals("sqlite"))
+        {
+            System.out.println("Reading sqlite db...");
+            sqlite db = new sqlite(parsedArgs);
+            db.readDatabase();
+        }
     }
 }
